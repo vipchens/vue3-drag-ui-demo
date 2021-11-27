@@ -1,5 +1,6 @@
-import RowWidget from './widgets/RowWidget.vue'
-import TestWidget from './widgets/TestWidget.vue'
+import RowWidget from './packages/row/row.vue'
+import ColWidget from './packages/col/col.vue'
+import TestWidget from './packages/TestWidget.vue'
 
 interface WidgetsConfigs {
   [key: string]: WidgetsConfigItem
@@ -17,10 +18,13 @@ export const widgetConfig: WidgetsConfigs = {
         name: 'RowWidget'
       },
       {
+        name: 'ColWidget'
+      },
+      {
         name: 'TestWidget'
       }
     ]
   }
 }
 
-export default { RowWidget, TestWidget }
+export default { RowWidget, ColWidget, TestWidget }

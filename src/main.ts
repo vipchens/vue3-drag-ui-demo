@@ -5,7 +5,7 @@ import draggable from "vuedraggable";
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-import widgetComponents from "./components/design-widgets";
+import widgetComponents from "./widgets";
 
 import App from "./App.vue";
 

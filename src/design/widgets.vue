@@ -19,13 +19,13 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 
-import { widgetConfig as configs } from '../design-widgets'
-import { WidgetItem } from '../design-widgets/WidgetItem'
+import { widgetConfig as configs } from '../widgets'
+import { WidgetElement } from '../widgets/core/WidgetClone'
 
 const activeNames = reactive(['1'])
 const widgetConfig = reactive(configs)
 
 const addClone = (element: { name: any }) => {
-  return new WidgetItem(element)
+  return new WidgetElement(element)
 }
 </script>

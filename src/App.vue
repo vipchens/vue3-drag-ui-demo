@@ -19,8 +19,8 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import Widgets from './components/design-editor/widgets.vue';
-import Canvas from './components/design-editor/canvas.vue';
+import Widgets from './design/widgets.vue';
+import Canvas from './design/canvas.vue';
 import useEventBus from './hooks/useEventBus';
 
 const { eventBus } = useEventBus()
