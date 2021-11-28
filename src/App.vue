@@ -1,46 +1,44 @@
-
-
 <template>
   <el-container>
     <el-header height="40px">Header</el-header>
     <el-container>
       <el-aside width="340px">
         <widgets />
+        <pre>{{ data.VNodes }}</pre>
       </el-aside>
       <el-main>
         <Canvas />
       </el-main>
       <el-aside width="340px">
-        <pre>{{ data.VNodes }}</pre>
+        <panel />
       </el-aside>
     </el-container>
   </el-container>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import Widgets from './design/widgets.vue';
-import Canvas from './design/canvas.vue';
-import useEventBus from './hooks/useEventBus';
+import { reactive } from "vue";
+import Widgets from "./design/widgets.vue";
+import Canvas from "./design/canvas.vue";
+import useEventBus from "./hooks/useEventBus";
+import panel from "./design/panel.vue";
 
-const { eventBus } = useEventBus()
+const { eventBus } = useEventBus();
 
 interface DataInterface {
-  VNodes: []
+  VNodes: [];
 }
 
 const data: DataInterface = reactive({
-  VNodes: []
-})
+  VNodes: [],
+});
 
 setTimeout(() => {
-  eventBus.emit('uu', '99')
-
-}, 2000)
-eventBus.on('updateVNode', (VNode: []) => {
-  data.VNodes = VNode
-})
-
+  eventBus.emit("uu", "99");
+}, 2000);
+eventBus.on("updateVNode", (VNode: []) => {
+  data.VNodes = VNode;
+});
 </script>
 
 <style>

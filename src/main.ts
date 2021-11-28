@@ -16,7 +16,9 @@ widgets.forEach(widget => {
   app.component(widget, widgetComponents[widget])
 });
 app.component('draggable', draggable)
-app.use(ElementPlus)
+app.use(ElementPlus, {
+  size: 'mini'
+})
 
 
 app.config.globalProperties.$EventBus = mitt();

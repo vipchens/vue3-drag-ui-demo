@@ -1,5 +1,3 @@
-import { ElCol } from "element-plus"
-
 export const ui = {
   props: {
     span: 4,
@@ -36,3 +34,8 @@ export const panel = [
     type: 'number'
   },
 ]
+
+
+export default {
+  ui, panel
+}

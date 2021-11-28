@@ -1,10 +1,5 @@
 <template>
-  <el-col
-    v-bind="props.element.data.props"
-    :class="choseClass"
-    @click.stop="emitChoseElement(props.element)"
-  >
-    {{ choseClass }}
+  <el-form :class="choseClass" @click.stop="emitChoseElement(props.element)">
     <draggable
       class="draggable"
       item-key="name"
@@ -15,7 +10,7 @@
         <component :is="element.name" :element="element" />
       </template>
     </draggable>
-  </el-col>
+  </el-form>
 </template>
 
 <script setup lang="ts">

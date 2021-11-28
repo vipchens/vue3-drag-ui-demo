@@ -17,15 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
-import { widgetConfig as configs } from '../widgets'
-import { WidgetElement } from '../widgets/core/WidgetClone'
+import { widgetConfig as configs } from "../widgets";
+import { WidgetElement } from "../widgets/core/WidgetElement";
+import { BaseWidget, WidgetUI, WidgetPanelConfigItem } from "../types";
 
-const activeNames = reactive(['1'])
-const widgetConfig = reactive(configs)
+const activeNames = reactive(["1"]);
+const widgetConfig = reactive(configs);
 
-const addClone = (element: { name: any }) => {
-  return new WidgetElement(element)
-}
+const addClone = (element: BaseWidget) => {
+  return new WidgetElement(element);
+};
 </script>

@@ -18,7 +18,6 @@ import { reactive } from "vue";
 import useActiveElement from "../../../hooks/useActiveElement";
 
 const props = defineProps(["element"]);
-const VNode = reactive([]);
 
 const { choseClass, emitChoseElement, onChoseElement } = useActiveElement();
 onChoseElement(props.element);
