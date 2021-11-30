@@ -1,11 +1,9 @@
-import RowWidget from './packages/row/row.vue'
-import RowWidgetConfig from './packages/row/config'
+import RowWidget from './packages/row'
 
-import ColWidget from './packages/col/col.vue'
-import ColWidgetConfig from './packages/col/config'
+import ColWidget from './packages/col'
 
-import FormWidget from './packages/form/form.vue'
-import TestWidget from './packages/TestWidget.vue'
+import FormWidget from './packages/form'
+import TestWidget from './packages/test'
 
 interface WidgetsConfigs {
   [key: string]: WidgetsConfigItem
@@ -14,34 +12,34 @@ interface WidgetsConfigItem {
   title: string,
   configs: object[]
 }
-console.log(ColWidgetConfig, 'ColWidgetConfig');
-
 
 export const widgetConfig: WidgetsConfigs = {
   layout: {
     title: '布局组件',
     configs: [
-      {
-        name: 'RowWidget',
-        ...RowWidgetConfig
-      },
-      {
-        name: 'ColWidget',
-        ...ColWidgetConfig
-      },
-      {
-        name: 'TestWidget'
-      }
+      RowWidget,
+      ColWidget,
+      TestWidget
     ],
   },
   form: {
     title: '表单',
     configs: [
-      {
-        name: 'FormWidget'
-      },
+      FormWidget
     ],
   }
 }
 
-export default { RowWidget, ColWidget, FormWidget, TestWidget }
+const packagesComponentMap = {}
+const packages = [
+  RowWidget,
+  ColWidget,
+  FormWidget,
+
+  TestWidget
+]
+packages.forEach(item => {
+  packagesComponentMap[item.name] = item.component
+})
+
+export default packagesComponentMap

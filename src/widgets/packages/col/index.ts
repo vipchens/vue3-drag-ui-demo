@@ -1,6 +1,7 @@
+import ColWidget from './col.vue'
 export const ui = {
   props: {
-    span: 4,
+    span: 6,
     offset: 0,
     push: 0,
     pull: 0,
@@ -35,7 +36,9 @@ export const panel = [
   },
 ]
 
-
 export default {
-  ui, panel
+  name: 'ColWidget',
+  ui,
+  panel,
+  component: ColWidget
 }

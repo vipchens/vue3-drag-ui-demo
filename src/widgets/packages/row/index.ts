@@ -1,6 +1,8 @@
+import RowWidget from './row.vue'
+
 export const ui = {
   props: {
-    span: 6,
+    span: 4,
     offset: 0,
     push: 0,
     pull: 0,
@@ -35,7 +37,10 @@ export const panel = [
   },
 ]
 
+
 export default {
+  name: 'RowWidget',
   ui,
-  panel
+  panel,
+  component: RowWidget
 }
