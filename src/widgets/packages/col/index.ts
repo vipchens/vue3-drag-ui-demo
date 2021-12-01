@@ -38,6 +38,8 @@ export const panel = [
 
 export default {
   name: 'ColWidget',
+  title: 'Col',
+  icon: 'icon-3column',
   ui,
   panel,
   component: ColWidget

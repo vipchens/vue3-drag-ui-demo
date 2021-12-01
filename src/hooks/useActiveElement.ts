@@ -9,6 +9,8 @@ export default function () {
 
   // 监听元素选中事件
   const onChoseElement = (curElement: WidgetElement) => {
+    console.log(curElement, 'curElementcurElement2');
+
     // 选中元素时
     eventBus.on('choseElement', (choseElement: WidgetElement) => {
       choseClass.value = choseElement.id === curElement.id ? 'chose-element' : ''

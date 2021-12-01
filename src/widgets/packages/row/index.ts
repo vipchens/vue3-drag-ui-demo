@@ -40,6 +40,8 @@ export const panel = [
 
 export default {
   name: 'RowWidget',
+  title: 'Row',
+  icon: 'icon-column-vertical',
   ui,
   panel,
   component: RowWidget

@@ -27,6 +27,12 @@ const data: DataInterface = reactive({
   VNodes: [],
 });
 
+eventBus.on("loadVNode", (VNodes) => {
+  console.log(VNodes, "loadVNode");
+
+  data.VNodes = VNodes;
+});
+
 watch(data.VNodes, () => {
   eventBus.emit("updateVNode", data.VNodes);
 });

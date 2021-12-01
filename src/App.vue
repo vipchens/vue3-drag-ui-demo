@@ -1,6 +1,9 @@
 <template>
   <el-container>
-    <el-header height="40px">Header</el-header>
+    <el-header height="40px">
+      Drag UI
+      <i class="iconfont icon-baocunwendang" @click="saveVNode"></i>
+    </el-header>
     <el-container>
       <el-aside width="340px">
         <widgets />
@@ -17,7 +20,8 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import localforage from "localforage";
+import { reactive, onMounted } from "vue";
 import Widgets from "./design/widgets.vue";
 import Canvas from "./design/canvas.vue";
 import useEventBus from "./hooks/useEventBus";
@@ -33,9 +37,15 @@ const data: DataInterface = reactive({
   VNodes: [],
 });
 
-setTimeout(() => {
-  eventBus.emit("uu", "99");
-}, 2000);
+const saveVNode = () => {
+  localforage.setItem("UI_VNODE", JSON.stringify(data.VNodes));
+};
+
+onMounted(async () => {
+  const VNodes = await localforage.getItem("UI_VNODE");
+  VNodes && eventBus.emit("loadVNode", JSON.parse(VNodes));
+});
+
 eventBus.on("updateVNode", (VNode: []) => {
   data.VNodes = VNode;
 });
@@ -62,10 +72,15 @@ body {
 }
 .el-aside {
   border-right: 1px solid #eee;
+  padding: 0 10px;
 }
 .el-main {
   padding: 10px;
   background-color: #eee;
+}
+.icon-baocunwendang {
+  font-size: 20px;
+  margin-left: 30px;
 }
 pre {
   text-align: left;

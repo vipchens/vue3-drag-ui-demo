@@ -3,7 +3,10 @@ import mitt from "mitt";
 
 import draggable from "vuedraggable";
 import ElementPlus from 'element-plus'
+import ElementPlusIcons from '@element-plus/icons'
 import 'element-plus/dist/index.css'
+
+import './assets/css/font.css'
 
 import widgetComponents from "./widgets";
 

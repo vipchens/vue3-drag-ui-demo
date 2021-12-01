@@ -3,6 +3,9 @@ import RowWidget from './packages/row'
 import ColWidget from './packages/col'
 
 import FormWidget from './packages/form'
+import FormItemWidget from './packages/form-item'
+import InputWidget from './packages/input'
+
 import TestWidget from './packages/test'
 
 interface WidgetsConfigs {
@@ -25,7 +28,9 @@ export const widgetConfig: WidgetsConfigs = {
   form: {
     title: '表单',
     configs: [
-      FormWidget
+      FormWidget,
+      FormItemWidget,
+      InputWidget
     ],
   }
 }
@@ -35,7 +40,8 @@ const packages = [
   RowWidget,
   ColWidget,
   FormWidget,
-
+  FormItemWidget,
+  InputWidget,
   TestWidget
 ]
 packages.forEach(item => {

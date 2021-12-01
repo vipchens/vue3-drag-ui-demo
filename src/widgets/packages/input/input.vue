@@ -1,20 +1,11 @@
 <template>
-  <el-col
-    v-bind="props.element.data.props"
-    :class="choseClass"
-    @click.stop="emitChoseElement(props.element)"
-  >
-    <draggable
-      class="draggable"
-      item-key="name"
-      v-model="props.element.children"
-      group="DS"
-    >
-      <template #item="{ element }">
-        <component :is="element.name" :element="element" />
-      </template>
-    </draggable>
-  </el-col>
+  <div>
+    <el-input
+      v-bind="element.data.props"
+      :class="choseClass"
+      @click.stop="emitChoseElement(props.element)"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -30,7 +21,7 @@ onChoseElement(element);
 </script>
 
 <style lang="less" scoped>
-.el-col {
+.el-input {
   width: 100%;
 }
 .draggable {

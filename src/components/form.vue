@@ -12,7 +12,15 @@
         v-model.number="data[item.prop]"
         type="number"
       />
-      <el-input v-else v-model="data[item.props]" />
+
+      <el-input
+        v-if="item.type === 'json'"
+        v-model="data[item.prop]"
+        :rows="2"
+        type="textarea"
+        placeholder="Please input"
+      />
+      <el-input v-else v-model="data[item.prop]" />
     </el-form-item>
 
     <el-button type="primary" @click="submit">保存</el-button>

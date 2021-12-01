@@ -18,6 +18,8 @@ export const panel = [
 
 export default {
   name: 'FormWidget',
+  title: '表单',
+  icon: 'icon-biaodan',
   ui,
   panel,
 

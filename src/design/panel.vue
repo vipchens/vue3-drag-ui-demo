@@ -36,7 +36,7 @@ const saveForm = (type: string, result: object) => {
   console.log(curChoseElement.value, "curChoseElement.value");
 
   if (curChoseElement.value) {
-    curChoseElement.value.data[type] = result;
+    curChoseElement.value.data[type] = cloneDeep(result);
   }
 };
 // 选中元素时
