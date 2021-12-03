@@ -1,5 +1,5 @@
 <template>
-  <el-row :class="choseClass" @click.stop="emitChoseElement(props.element)">
+  <a-row :class="choseClass" @click.stop="emitChoseElement(props.element)">
     <draggable
       class="draggable"
       item-key="name"
@@ -10,7 +10,7 @@
         <component :is="element.name" :element="element" />
       </template>
     </draggable>
-  </el-row>
+  </a-row>
 </template>
 
 <script setup lang="ts">

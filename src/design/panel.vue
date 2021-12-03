@@ -1,16 +1,16 @@
 <template>
-  <el-tabs v-model="activeTab">
-    <el-tab-pane label="基本属性" name="base">
+  <a-tabs v-model:activeKey="activeTab">
+    <a-tab-pane tab="基本属性" key="base">
       <common-form
         v-if="curChoseElement"
         type="props"
-        :configs="curChoseElement.panel"
+        :schema="curChoseElement.panel"
         :data="data.props"
         @submit="saveForm"
       />
-    </el-tab-pane>
-    <el-tab-pane label="事件管理" name="events"></el-tab-pane>
-  </el-tabs>
+    </a-tab-pane>
+    <a-tab-pane tab="事件管理" key="events"></a-tab-pane>
+  </a-tabs>
 </template>
 
 <script setup lang="ts">

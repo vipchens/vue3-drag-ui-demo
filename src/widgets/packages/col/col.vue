@@ -1,5 +1,5 @@
 <template>
-  <el-col
+  <a-col
     v-bind="props.element.data.props"
     :class="choseClass"
     @click.stop="emitChoseElement(props.element)"
@@ -14,7 +14,7 @@
         <component :is="element.name" :element="element" />
       </template>
     </draggable>
-  </el-col>
+  </a-col>
 </template>
 
 <script setup lang="ts">
@@ -30,7 +30,7 @@ onChoseElement(element);
 </script>
 
 <style lang="less" scoped>
-.el-col {
+.a-col {
   width: 100%;
 }
 .draggable {
