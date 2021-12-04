@@ -1,7 +1,12 @@
 <template>
-  <a-row :class="choseClass" @click.stop="emitChoseElement(props.element)">
+  <div
+    class="row"
+    :class="choseClass"
+    @click.stop="emitChoseElement(props.element)"
+  >
     <draggable
-      class="draggable"
+      class="draggable-row"
+      :class="rowClass"
       item-key="name"
       v-model="props.element.children"
       group="DS"
@@ -10,23 +15,48 @@
         <component :is="element.name" :element="element" />
       </template>
     </draggable>
-  </a-row>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { ref, watch } from "vue";
 import useActiveElement from "../../../hooks/useActiveElement";
 
+let rowClass = ref({
+  "ant-row": true,
+});
+
 const props = defineProps(["element"]);
+
+watch(
+  () => props.element.data.attrs,
+  (attrs) => {
+    rowClass.value = {
+      "ant-row": true,
+    };
+    if (attrs.align) {
+      rowClass.value[`ant-row-${attrs.align}`] = true;
+    }
+    if (attrs.justify) {
+      rowClass.value[`ant-row-${attrs.justify}`] = true;
+    }
+    if (!attrs.wrap) {
+      rowClass.value["ant-row-no-wrap"] = true;
+    }
+  },
+  { deep: true }
+);
 
 const { choseClass, emitChoseElement, onChoseElement } = useActiveElement();
 onChoseElement(props.element);
 </script>
 
 <style lang="less" scoped>
-.draggable {
+.draggable-row {
   min-height: 40px;
   width: 100%;
-  height: 100%;
+}
+.row {
+  border: 1px dashed #eee;
 }
 </style>

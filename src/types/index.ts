@@ -1,5 +1,5 @@
 export interface WidgetUI {
-  props: object
+  attrs: object
   events: object
 }
 

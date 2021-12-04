@@ -1,6 +1,6 @@
 <template>
   <a-col
-    v-bind="props.element.data.props"
+    v-bind="props.element.data.attrs"
     :class="choseClass"
     @click.stop="emitChoseElement(props.element)"
   >

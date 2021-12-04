@@ -1,7 +1,10 @@
 <template>
-  <json-form v-model="data" v-bind="schema" label-position="top">
-    <a-button type="primary" @click="submit">保存</a-button>
-    <a-button>取消</a-button>
+  <json-form
+    v-model="data"
+    v-bind="schema"
+    label-position="top"
+    @submit="submit"
+  >
   </json-form>
 </template>
 

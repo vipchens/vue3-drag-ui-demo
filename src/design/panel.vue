@@ -3,9 +3,9 @@
     <a-tab-pane tab="基本属性" key="base">
       <common-form
         v-if="curChoseElement"
-        type="props"
+        type="attrs"
         :schema="curChoseElement.panel"
-        :data="data.props"
+        :data="data"
         @submit="saveForm"
       />
     </a-tab-pane>
@@ -23,10 +23,7 @@ import { WidgetElement } from "../types";
 const { eventBus } = useEventBus();
 
 let curChoseElement: Ref<WidgetElement | null> = ref(null);
-const data = reactive({
-  props: {},
-  events: {},
-});
+let data = reactive({});
 
 const activeTab = ref("base");
 
@@ -36,14 +33,15 @@ const saveForm = (type: string, result: object) => {
   console.log(curChoseElement.value, "curChoseElement.value");
 
   if (curChoseElement.value) {
-    curChoseElement.value.data[type] = cloneDeep(result);
+    curChoseElement.value.data[type] = cloneDeep(result[type]);
   }
 };
 // 选中元素时
 eventBus.on("choseElement", (choseElement: WidgetElement) => {
-  const { props, events } = cloneDeep(choseElement.data);
-  data.props = props;
-  data.events = events;
+  const elementData = cloneDeep(choseElement.data);
+  for (const key in elementData) {
+    data[key] = elementData[key];
+  }
   curChoseElement.value = choseElement;
 });
 </script>

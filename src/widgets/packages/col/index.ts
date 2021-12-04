@@ -1,12 +1,13 @@
 import ColWidget from './col.vue'
 export const ui = {
-  props: {
-    span: 6,
+  attrs: {
+    span: 12,
     offset: 0,
-    push: 0,
+    order: 0,
     pull: 0,
+    push: 0
   },
-  event: {}
+  events: {}
 }
 
 export const editschema = {
@@ -23,7 +24,7 @@ export const editschema = {
             "title": "栅格占位格数",
             "type": "number",
             "description": "为 0 时相当于 display: none",
-            "default": 6,
+            "default": 12,
             "multipleOf": 1
           },
           "offset": {
@@ -70,7 +71,7 @@ export const editschema = {
   },
   "uiSchema": {},
   "formFooter": {
-    "show": false
+    "show": true
   },
   "formProps": {
     "layoutColumn": 2,
