@@ -38,16 +38,16 @@ const data: DataInterface = reactive({
 });
 
 const saveVNode = () => {
-  localforage.setItem("UI_VNODE", JSON.stringify(data.VNodes));
+  // localforage.setItem("UI_VNODE", JSON.stringify(data.VNodes));
 };
 
 onMounted(async () => {
   const VNodes = await localforage.getItem("UI_VNODE");
-  VNodes && eventBus.emit("loadVNode", JSON.parse(VNodes));
+  // VNodes && eventBus.emit("loadVNode", JSON.parse(VNodes));
 });
 
 eventBus.on("updateVNode", (VNode: []) => {
-  data.VNodes = VNode;
+  // data.VNodes = VNode;
 });
 </script>
 

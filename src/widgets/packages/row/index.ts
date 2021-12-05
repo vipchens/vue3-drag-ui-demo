@@ -1,21 +1,20 @@
 import RowWidget from './row.vue'
 
-export const ui = {
-  attrs: {
-    align: 'middle',
-    justify: 'start',
-    wrap: true,
-    gutter: 16,
-  },
-  events: {}
+const uiAttrs = {
+  align: 'middle',
+  justify: 'start',
+  wrap: true,
+  // gutter: 16,
 }
 
-export const editSchema = {
+const uiEvents = {}
+
+export const panelSchema = {
   "schema": {
     "type": "object",
     "required": [],
     "properties": {
-      "attrs": {
+      "uiAttrs": {
         "title": "基础参数",
         "type": "object",
         "required": [
@@ -70,26 +69,26 @@ export const editSchema = {
               "否"
             ]
           },
-          "gutter": {
-            "title": "栅格间隔",
-            "type": "number",
-            "description": "可以写成像素值或支持响应式的对象写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。或者使用数组形式同时设置 [水平间距, 垂直间距]（1.5.0 后支持）。",
-            "default": 16,
-            "ui:options": {
-              "placeholder": "请输入"
-            }
-          }
+          // "gutter": {
+          //   "title": "栅格间隔",
+          //   "type": "number",
+          //   "description": "可以写成像素值或支持响应式的对象写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。或者使用数组形式同时设置 [水平间距, 垂直间距]（1.5.0 后支持）。",
+          //   "default": 16,
+          //   "ui:options": {
+          //     "placeholder": "请输入"
+          //   }
+          // }
         },
         "ui:order": [
           "align",
           "justify",
           "wrap",
-          "gutter"
+          // "gutter"
         ]
       }
     },
     "ui:order": [
-      "attrs"
+      "uiAttrs"
     ]
   },
   "uiSchema": {},
@@ -105,7 +104,8 @@ export default {
   name: 'RowWidget',
   title: 'Row',
   icon: 'icon-column-vertical',
-  ui,
-  panel: editSchema,
+  uiAttrs,
+  uiEvents,
+  panel: panelSchema,
   component: RowWidget
 }

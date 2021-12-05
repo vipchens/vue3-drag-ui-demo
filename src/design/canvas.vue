@@ -61,6 +61,7 @@ watch(data.VNodes, () => {
 
 // 选中元素时
 .chose-element {
+  position: relative;
   border: 1px solid rgb(184, 50, 247) !important;
 }
 </style>

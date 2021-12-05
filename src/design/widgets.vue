@@ -28,11 +28,12 @@ import { reactive } from "vue";
 
 import { widgetConfig as configs } from "../widgets";
 import { WidgetElement } from "../widgets/core/WidgetElement";
-import { BaseWidget, WidgetUI, WidgetPanelConfigItem } from "../types";
+import { BaseWidget, WidgetPanelConfigItem } from "../types";
 
 const widgetConfig = reactive(configs);
 
 const addClone = (element: BaseWidget) => {
+  console.log(element, new WidgetElement(element), "addClone");
   return new WidgetElement(element);
 };
 </script>

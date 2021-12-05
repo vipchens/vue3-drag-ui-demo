@@ -1,21 +1,21 @@
 import ColWidget from './col.vue'
-export const ui = {
-  attrs: {
-    span: 12,
-    offset: 0,
-    order: 0,
-    pull: 0,
-    push: 0
-  },
-  events: {}
+
+const uiAttrs = {
+  span: 12,
+  offset: 0,
+  order: 0,
+  pull: 0,
+  push: 0
 }
+
+const uiEvents = {}
 
 export const editschema = {
   "schema": {
     "type": "object",
     "required": [],
     "properties": {
-      "attrs": {
+      "uiAttrs": {
         "title": "基础参数",
         "type": "object",
         "required": [],
@@ -66,7 +66,7 @@ export const editschema = {
       }
     },
     "ui:order": [
-      "attrs"
+      "uiAttrs"
     ]
   },
   "uiSchema": {},
@@ -84,7 +84,8 @@ export default {
   name: 'ColWidget',
   title: 'Col',
   icon: 'icon-3column',
-  ui,
+  uiAttrs,
+  uiEvents,
   panel: editschema,
   component: ColWidget
 }

@@ -1,9 +1,11 @@
 <template>
   <a-col
-    v-bind="props.element.data.attrs"
+    v-bind="props.element.uiAttrs"
     :class="choseClass"
     @click.stop="emitChoseElement(props.element)"
   >
+    <handler-dom v-if="choseClass" @del="delElement"></handler-dom>
+
     <draggable
       class="draggable"
       item-key="name"
@@ -24,7 +26,12 @@ import useActiveElement from "../../../hooks/useActiveElement";
 const props = defineProps(["element"]);
 const element = props.element;
 
-const { choseClass, emitChoseElement, onChoseElement } = useActiveElement();
+const delElement = () => {
+  props.element.delete();
+};
+
+const { HandlerDom, choseClass, emitChoseElement, onChoseElement } =
+  useActiveElement();
 
 onChoseElement(element);
 </script>

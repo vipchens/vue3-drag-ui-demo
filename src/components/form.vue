@@ -1,4 +1,5 @@
 <template>
+  {{ data }}
   <json-form
     v-model="data"
     v-bind="schema"

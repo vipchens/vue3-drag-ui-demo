@@ -1,10 +1,10 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2978017 */
-  src: url("//at.alicdn.com/t/font_2978017_8tokqonp776.woff2?t=1638364114486")
+  src: url("//at.alicdn.com/t/font_2978017_e02orz8bxd.woff2?t=1638673983005")
       format("woff2"),
-    url("//at.alicdn.com/t/font_2978017_8tokqonp776.woff?t=1638364114486")
+    url("//at.alicdn.com/t/font_2978017_e02orz8bxd.woff?t=1638673983005")
       format("woff"),
-    url("//at.alicdn.com/t/font_2978017_8tokqonp776.ttf?t=1638364114486")
+    url("//at.alicdn.com/t/font_2978017_e02orz8bxd.ttf?t=1638673983005")
       format("truetype");
 }
 
@@ -14,6 +14,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shanchu:before {
+  content: "\e74b";
 }
 
 .icon-baocunwendang:before {

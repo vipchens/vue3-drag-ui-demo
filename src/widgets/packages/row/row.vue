@@ -4,11 +4,12 @@
     :class="choseClass"
     @click.stop="emitChoseElement(props.element)"
   >
+    <handler-dom v-if="choseClass" @del="delElement"></handler-dom>
     <draggable
+      v-model="props.element.children"
       class="draggable-row"
       :class="rowClass"
       item-key="name"
-      v-model="props.element.children"
       group="DS"
     >
       <template #item="{ element }">
@@ -28,26 +29,35 @@ let rowClass = ref({
 
 const props = defineProps(["element"]);
 
+console.log(props, "propspropss");
+
 watch(
-  () => props.element.data.attrs,
-  (attrs) => {
+  () => props.element.uiAttrs,
+  (uiAttrs) => {
+    console.log(uiAttrs, "uiAttrs1");
+
     rowClass.value = {
       "ant-row": true,
     };
-    if (attrs.align) {
-      rowClass.value[`ant-row-${attrs.align}`] = true;
+    if (uiAttrs.align) {
+      rowClass.value[`ant-row-${uiAttrs.align}`] = true;
     }
-    if (attrs.justify) {
-      rowClass.value[`ant-row-${attrs.justify}`] = true;
+    if (uiAttrs.justify) {
+      rowClass.value[`ant-row-${uiAttrs.justify}`] = true;
     }
-    if (!attrs.wrap) {
+    if (!uiAttrs.wrap) {
       rowClass.value["ant-row-no-wrap"] = true;
     }
   },
   { deep: true }
 );
 
-const { choseClass, emitChoseElement, onChoseElement } = useActiveElement();
+const delElement = () => {
+  props.element.delete();
+};
+
+const { HandlerDom, choseClass, emitChoseElement, onChoseElement } =
+  useActiveElement();
 onChoseElement(props.element);
 </script>
 
