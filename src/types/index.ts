@@ -1,7 +1,7 @@
-export interface WidgetUI {
-  props: object
-  events: object
-}
+// export interface WidgetUI {
+//   attrs: object
+//   events: object
+// }
 
 export interface WidgetPanelConfigItem {
   prop: string
@@ -12,7 +12,8 @@ export interface WidgetPanelConfigItem {
 
 export interface BaseWidget {
   name: string
-  ui: WidgetUI
+  uiAttrs: object
+  uiEvents: object
   panel: WidgetPanelConfigItem[]
 }
 
@@ -20,7 +21,7 @@ export interface BaseWidget {
 export interface WidgetElement {
   id: number
   name: string
-  children: object[]
-  data: WidgetUI
+  uiAttrs: object
+  uiEvents: object
   panel: WidgetPanelConfigItem[]
 }

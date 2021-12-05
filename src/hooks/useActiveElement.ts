@@ -1,6 +1,7 @@
 import { ref } from "vue";
 import { WidgetElement } from "../types";
 import useEventBus from './useEventBus';
+import HandlerDom from './components/handler.vue'
 
 
 export default function () {
@@ -27,6 +28,7 @@ export default function () {
   return {
     choseClass,
     onChoseElement,
-    emitChoseElement
+    emitChoseElement,
+    HandlerDom
   }
 };

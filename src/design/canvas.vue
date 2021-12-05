@@ -55,11 +55,13 @@ watch(data.VNodes, () => {
 
 // 拖动时
 .sortable-chosen {
-  border: 1px dashed rgb(184, 50, 247) !important;
+  border: 1px solid rgb(184, 50, 247) !important;
+  background-color: rgba(184, 50, 247, 0.3);
 }
 
 // 选中元素时
 .chose-element {
-  border: 1px dashed rgb(184, 50, 247) !important;
+  position: relative;
+  border: 1px solid rgb(184, 50, 247) !important;
 }
 </style>

@@ -12,12 +12,14 @@ interface WidgetsConfigs {
   [key: string]: WidgetsConfigItem
 }
 interface WidgetsConfigItem {
+  name: string,
   title: string,
   configs: object[]
 }
 
 export const widgetConfig: WidgetsConfigs = {
   layout: {
+    name: 'layout',
     title: '布局组件',
     configs: [
       RowWidget,

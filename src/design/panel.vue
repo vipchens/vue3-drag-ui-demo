@@ -1,16 +1,16 @@
 <template>
-  <el-tabs v-model="activeTab">
-    <el-tab-pane label="基本属性" name="base">
+  <a-tabs v-model:activeKey="activeTab">
+    <a-tab-pane tab="基本属性" key="base">
       <common-form
         v-if="curChoseElement"
-        type="props"
-        :configs="curChoseElement.panel"
-        :data="data.props"
+        type="uiAttrs"
+        :schema="curChoseElement.panel"
+        :data="data"
         @submit="saveForm"
       />
-    </el-tab-pane>
-    <el-tab-pane label="事件管理" name="events"></el-tab-pane>
-  </el-tabs>
+    </a-tab-pane>
+    <a-tab-pane tab="事件管理" key="events"></a-tab-pane>
+  </a-tabs>
 </template>
 
 <script setup lang="ts">
@@ -23,9 +23,9 @@ import { WidgetElement } from "../types";
 const { eventBus } = useEventBus();
 
 let curChoseElement: Ref<WidgetElement | null> = ref(null);
-const data = reactive({
-  props: {},
-  events: {},
+let data = ref({
+  uiAttrs: {},
+  uiEvents: {},
 });
 
 const activeTab = ref("base");
@@ -36,14 +36,14 @@ const saveForm = (type: string, result: object) => {
   console.log(curChoseElement.value, "curChoseElement.value");
 
   if (curChoseElement.value) {
-    curChoseElement.value.data[type] = cloneDeep(result);
+    curChoseElement.value[type] = cloneDeep(result[type]);
   }
 };
 // 选中元素时
 eventBus.on("choseElement", (choseElement: WidgetElement) => {
-  const { props, events } = cloneDeep(choseElement.data);
-  data.props = props;
-  data.events = events;
+  // const elementData = cloneDeep(choseElement);
+  data.value.uiAttrs = cloneDeep(choseElement.uiAttrs);
+  data.value.uiEvents = cloneDeep(choseElement.uiEvents);
   curChoseElement.value = choseElement;
 });
 </script>

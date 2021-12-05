@@ -1,48 +1,111 @@
 import RowWidget from './row.vue'
 
-export const ui = {
-  props: {
-    span: 4,
-    offset: 0,
-    push: 0,
-    pull: 0,
-  },
-  event: {}
+const uiAttrs = {
+  align: 'middle',
+  justify: 'start',
+  wrap: true,
+  // gutter: 16,
 }
 
-export const panel = [
-  {
-    prop: 'span',
-    label: '栅格占据的列数',
-    default: 4,
-    type: 'number'
+const uiEvents = {}
+
+export const panelSchema = {
+  "schema": {
+    "type": "object",
+    "required": [],
+    "properties": {
+      "uiAttrs": {
+        "title": "基础参数",
+        "type": "object",
+        "required": [
+          "wrap"
+        ],
+        "properties": {
+          "align": {
+            "title": "垂直对齐方式",
+            "type": "string",
+            "ui:widget": "SelectWidget",
+            "description": "flex 布局下的垂直对齐方式：top middle bottom",
+            "default": "middle",
+            "enum": [
+              "top",
+              "middle",
+              "bottom"
+            ],
+            "enumNames": [
+              "top",
+              "middle",
+              "bottom"
+            ]
+          },
+          "justify": {
+            "title": "水平排列方式",
+            "type": "string",
+            "ui:widget": "SelectWidget",
+            "description": "flex 布局下的水平排列方式：start end center space-around space-between",
+            "default": "start",
+            "enum": [
+              "start",
+              "end",
+              "center",
+              "space-around",
+              "space-between"
+            ],
+            "enumNames": [
+              "start",
+              "end",
+              "center",
+              "space-around",
+              "space-between"
+            ]
+          },
+          "wrap": {
+            "title": "是否自动换行",
+            "type": "boolean",
+            "ui:widget": "RadioWidget",
+            "default": "true",
+            "enumNames": [
+              "是",
+              "否"
+            ]
+          },
+          // "gutter": {
+          //   "title": "栅格间隔",
+          //   "type": "number",
+          //   "description": "可以写成像素值或支持响应式的对象写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。或者使用数组形式同时设置 [水平间距, 垂直间距]（1.5.0 后支持）。",
+          //   "default": 16,
+          //   "ui:options": {
+          //     "placeholder": "请输入"
+          //   }
+          // }
+        },
+        "ui:order": [
+          "align",
+          "justify",
+          "wrap",
+          // "gutter"
+        ]
+      }
+    },
+    "ui:order": [
+      "uiAttrs"
+    ]
   },
-  {
-    prop: 'offset',
-    label: '栅格左侧的间隔格数',
-    default: 0,
-    type: 'number'
-  },
-  {
-    prop: 'push',
-    label: '栅格向右移动格数',
-    default: 0,
-    type: 'number'
-  },
-  {
-    prop: 'pull',
-    label: '栅格向左移动格数',
-    default: 0,
-    type: 'number'
-  },
-]
+  "uiSchema": {},
+  "formFooter": {},
+  "formProps": {
+    "labelWidth": "100px",
+    "labelSuffix": "："
+  }
+}
 
 
 export default {
   name: 'RowWidget',
   title: 'Row',
   icon: 'icon-column-vertical',
-  ui,
-  panel,
+  uiAttrs,
+  uiEvents,
+  panel: panelSchema,
   component: RowWidget
 }

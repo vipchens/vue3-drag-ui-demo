@@ -1,22 +1,22 @@
 <template>
-  <el-container>
-    <el-header height="40px">
-      Drag UI
+  <a-layout>
+    <a-layout-header height="40px">
+      DragUI
       <i class="iconfont icon-baocunwendang" @click="saveVNode"></i>
-    </el-header>
-    <el-container>
-      <el-aside width="340px">
+    </a-layout-header>
+    <a-layout>
+      <a-layout-sider width="340px">
         <widgets />
         <pre>{{ data.VNodes }}</pre>
-      </el-aside>
-      <el-main>
+      </a-layout-sider>
+      <a-layout-content>
         <Canvas />
-      </el-main>
-      <el-aside width="340px">
+      </a-layout-content>
+      <a-layout-sider width="440px">
         <panel />
-      </el-aside>
-    </el-container>
-  </el-container>
+      </a-layout-sider>
+    </a-layout>
+  </a-layout>
 </template>
 
 <script setup lang="ts">
@@ -38,16 +38,16 @@ const data: DataInterface = reactive({
 });
 
 const saveVNode = () => {
-  localforage.setItem("UI_VNODE", JSON.stringify(data.VNodes));
+  // localforage.setItem("UI_VNODE", JSON.stringify(data.VNodes));
 };
 
 onMounted(async () => {
   const VNodes = await localforage.getItem("UI_VNODE");
-  VNodes && eventBus.emit("loadVNode", JSON.parse(VNodes));
+  // VNodes && eventBus.emit("loadVNode", JSON.parse(VNodes));
 });
 
 eventBus.on("updateVNode", (VNode: []) => {
-  data.VNodes = VNode;
+  // data.VNodes = VNode;
 });
 </script>
 
@@ -56,7 +56,6 @@ eventBus.on("updateVNode", (VNode: []) => {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 html,
@@ -66,15 +65,22 @@ body {
   padding: 0;
 }
 #app,
-.el-container,
-.el-aside {
+.ant-layout,
+.ant-layout-sider {
   height: 100%;
 }
-.el-aside {
-  border-right: 1px solid #eee;
-  padding: 0 10px;
+.ant-layout-header {
+  border-bottom: 1px solid #eee;
 }
-.el-main {
+.ant-layout-header,
+.ant-layout-sider {
+  background: #fff;
+}
+.ant-layout-sider {
+  padding: 0 10px;
+  background: #fff;
+}
+.ant-layout-content {
   padding: 10px;
   background-color: #eee;
 }
