@@ -46,8 +46,8 @@ export class WidgetElement {
   delete() {
     console.log(this.parentElement, 'this.parentElement');
     if (this.parentElement) {
-      this.parentElement.children = []
-
+      const index = this.parentElement.children.findIndex((item) => item.id === this.id)
+      this.parentElement.children.splice(index, 1)
     }
   }
 }
