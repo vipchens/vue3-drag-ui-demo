@@ -44,7 +44,6 @@ export class WidgetElement {
   }
 
   delete() {
-    console.log(this.parentElement, 'this.parentElement');
     if (this.parentElement) {
       const index = this.parentElement.children.findIndex((item) => item.id === this.id)
       this.parentElement.children.splice(index, 1)
