@@ -1,4 +1,6 @@
 import { createApp } from "vue";
+
+import store from './store'
 import mitt from "mitt";
 
 import draggable from "vuedraggable";
@@ -23,6 +25,7 @@ widgets.forEach(widget => {
 });
 app.component('draggable', draggable)
 app.use(Antd);
+app.use(store);
 
 
 app.config.globalProperties.$EventBus = mitt();
