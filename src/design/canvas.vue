@@ -1,11 +1,6 @@
 <template>
   <div class="canvas">
-    <draggable
-      :list="data.VNodes"
-      class="ds-draggable"
-      group="DS"
-      item-key="name"
-    >
+    <draggable :list="VNodes" class="ds-draggable" group="DS" item-key="name">
       <template #item="{ element }">
         <component :is="element.name" :element="element" />
       </template>
@@ -14,28 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from "vue";
+import { ref, reactive, watch } from "vue";
+import { useStore } from "vuex";
 import useEventBus from "../hooks/useEventBus";
 
 const { eventBus } = useEventBus();
 
-interface DataInterface {
-  VNodes: [];
-}
-
-const data: DataInterface = reactive({
-  VNodes: [],
-});
-
-eventBus.on("loadVNode", (VNodes) => {
-  console.log(VNodes, "loadVNode");
-
-  data.VNodes = VNodes;
-});
-
-watch(data.VNodes, () => {
-  eventBus.emit("updateVNode", data.VNodes);
-});
+const store = useStore();
+const VNodes = store.state.canvas.VNodes;
 </script>
 
 <style lang="less">

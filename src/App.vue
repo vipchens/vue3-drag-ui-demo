@@ -7,7 +7,6 @@
     <a-layout>
       <a-layout-sider width="340px">
         <widgets />
-        <pre>{{ data.VNodes }}</pre>
       </a-layout-sider>
       <a-layout-content>
         <Canvas />
@@ -20,34 +19,30 @@
 </template>
 
 <script setup lang="ts">
+import { cloneDeep } from "lodash";
 import localforage from "localforage";
-import { reactive, onMounted } from "vue";
+import {
+  readonly,
+  toRaw,
+  ref,
+  reactive,
+  onMounted,
+  shallowReactive,
+} from "vue";
+import { useStore } from "vuex";
+
 import Widgets from "./design/widgets.vue";
 import Canvas from "./design/canvas.vue";
 import useEventBus from "./hooks/useEventBus";
 import panel from "./design/panel.vue";
 
 const { eventBus } = useEventBus();
-
-interface DataInterface {
-  VNodes: [];
-}
-
-const data: DataInterface = reactive({
-  VNodes: [],
-});
-
-const saveVNode = () => {
-  // localforage.setItem("UI_VNODE", JSON.stringify(data.VNodes));
-};
+const store = useStore();
+const VNodes = store.state.canvas.VNodes;
 
 onMounted(async () => {
   const VNodes = await localforage.getItem("UI_VNODE");
   // VNodes && eventBus.emit("loadVNode", JSON.parse(VNodes));
-});
-
-eventBus.on("updateVNode", (VNode: []) => {
-  // data.VNodes = VNode;
 });
 </script>
 

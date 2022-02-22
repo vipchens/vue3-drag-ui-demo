@@ -31,10 +31,6 @@ let data = ref({
 const activeTab = ref("base");
 
 const saveForm = (type: string, result: object) => {
-  console.log(type, result, "result");
-
-  console.log(curChoseElement.value, "curChoseElement.value");
-
   if (curChoseElement.value) {
     curChoseElement.value[type] = cloneDeep(result[type]);
   }
